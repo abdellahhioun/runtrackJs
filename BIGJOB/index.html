@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Plateforme_ - Gestion de présence</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">La Plateforme_</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="home">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-page="calendar">Calendrier</a>
+                        </li>
+                        <li class="nav-item admin-only" style="display: none;">
+                            <a class="nav-link" href="#" data-page="admin">Administration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="loginBtn">Connexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <div id="app">
+            <!-- Home Page -->
+            <div id="home" class="page">
+                <h1>Bienvenue sur La Plateforme_</h1>
+                <p>Gérez votre présence et vos autorisations facilement.</p>
+            </div>
+
+            <!-- Login/Register Page -->
+            <div id="auth" class="page" style="display: none;">
+                <h2>Connexion / Inscription</h2>
+                <form id="authForm">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <button type="button" class="btn btn-secondary" id="switchAuthMode">S'inscrire</button>
+                </form>
+            </div>
+
+            <!-- Calendar Page -->
+            <div id="calendar" class="page" style="display: none;">
+                <h2>Calendrier de présence</h2>
+                <div id="calendarContainer"></div>
+            </div>
+
+            <!-- Admin Page -->
+            <div id="admin" class="page" style="display: none;">
+                <h2>Administration</h2>
+                <div class="mb-4">
+                    <h3>Demandes de présence</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Utilisateur</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="presenceRequests">
+                            <!-- Presence requests will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mb-4">
+                    <h3>Gestion des utilisateurs</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Rôle</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userManagement">
+                            <!-- User management rows will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <p>&copy; 2023 La Plateforme_. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
