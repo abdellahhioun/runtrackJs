@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Request Attendance</h2>
+        <form id="attendanceForm">
+            <input type="date" id="requestDate" required>
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('userId'); // Get user ID from URL
+
+            document.getElementById('attendanceForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const requestDate = document.getElementById('requestDate').value;
+
+                fetch('http://localhost:3000/attendance-request', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId, requestDate })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Attendance request submitted successfully!');
+                    } else {
+                        alert('Request failed: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
