@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderator Dashboard</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <h1>Moderator Dashboard</h1>
+    <h2>Presence Requests</h2>
+    <table id="requestsTable">
+        <tr>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <!-- Requests will be populated dynamically -->
+    </table>
+    <a href="logout.html">Logout</a>
+
+    <script>
+        // Fetch requests and populate table
+        fetch('/get_requests')
+        .then(response => response.json())
+        .then(requests => {
+            const table = document.getElementById('requestsTable');
+            requests.forEach(request => {
+                const row = table.insertRow();
+                row.insertCell(0).innerText = request.email;
+                row.insertCell(1).innerText = request.date;
+                row.insertCell(2).innerText = request.status;
+                const cell = row.insertCell(3);
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/update_request';
+                const inputEmail = document.createElement('input');
+                inputEmail.type = 'hidden';
+                inputEmail.name = 'email';
+                inputEmail.value = request.email;
+                form.appendChild(inputEmail);
+                const inputDate = document.createElement('input');
+                inputDate.type = 'hidden';
+                inputDate.name = 'date';
+                inputDate.value = request.date;
+                form.appendChild(inputDate);
+                const select = document.createElement('select');
+                select.name = 'status';
+                select.innerHTML = `<option value="approved">Approve</option>
+                                    <option value="rejected">Reject</option>`;
+                form.appendChild(select);
+                const button = document.createElement('button');
+                button.type = 'submit';
+                button.innerText = 'Submit';
+                form.appendChild(button);
+                cell.appendChild(form);
+            });
+        });
+    </script>
+</body>
+</html>

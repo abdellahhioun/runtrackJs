@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <h2>Users</h2>
+    <table id="usersTable">
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        <!-- Users will be populated dynamically -->
+    </table>
+    <a href="logout.html">Logout</a>
+
+    <script>
+        // Fetch users and populate table
+        fetch('/get_users')
+        .then(response => response.json())
+        .then(users => {
+            const table = document.getElementById('usersTable');
+            users.forEach(user => {
+                const row = table.insertRow();
+                row.insertCell(0).innerText = user.email;
+                row.insertCell(1).innerText = user.role;
+                const cell = row.insertCell(2);
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/update_role';
+                const inputEmail = document.createElement('input');
+                inputEmail.type = 'hidden';
+                inputEmail.name = 'email';
+                inputEmail.value = user.email;
+                form.appendChild(inputEmail);
+                const select = document.createElement('select');
+                select.name = 'role';
+                select.innerHTML = `<option value="user">User</option>
+                                    <option value="moderator">Moderator</option>
+                                    <option value="admin">Admin</option>`;
+                form.appendChild(select);
+                const button = document.createElement('button');
+                button.type = 'submit';
+                button.innerText = 'Update Role';
+                form.appendChild(button);
+                cell.appendChild(form);
+            });
+        });
+    </script>
+</body>
+</html>

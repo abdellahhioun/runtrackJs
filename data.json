@@ -1,4 +1,20 @@
 {
-    "users": [],
-    "attendance_requests": []
+    "users": [
+        {
+            "email": "admin@laplateforme.com",
+            "password": "adminpassword",
+            "role": "admin"
+        },
+        {
+            "email": "moderator@laplateforme.com",
+            "password": "moderatorpassword",
+            "role": "moderator"
+        },
+        {
+            "email": "user@laplateforme.com",
+            "password": "userpassword",
+            "role": "user"
+        }
+    ],
+    "requests": []
 }
