@@ -32,7 +32,7 @@
                 const cell = row.insertCell(2);
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = '/update_role';
+                form.action = '/update_role'; // Update role action
                 const inputEmail = document.createElement('input');
                 inputEmail.type = 'hidden';
                 inputEmail.name = 'email';
@@ -50,7 +50,8 @@
                 form.appendChild(button);
                 cell.appendChild(form);
             });
-        });
+        })
+        .catch(error => console.error('Error fetching users:', error));
     </script>
 </body>
 </html>

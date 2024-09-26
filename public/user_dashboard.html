@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Your Information</h2>
+        <div id="userInfo">
+            <!-- User information will be populated here -->
+        </div>
+
+        <h2>Actions</h2>
+        <div>
+            <button id="updateProfile">Update Profile</button>
+            <button id="viewRequests">View Requests</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Your Application Name</p>
+    </footer>
+
+    <script>
+        // Fetch user information (if needed)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example: Fetch user data from the server (if applicable)
+            // fetch('/get_user_info')
+            // .then(response => response.json())
+            // .then(data => {
+            //     document.getElementById('userInfo').innerText = JSON.stringify(data);
+            // })
+            // .catch(error => console.error('Error fetching user info:', error));
+
+            // Add event listeners for buttons
+            document.getElementById('updateProfile').addEventListener('click', function() {
+                // Logic to update user profile
+                alert('Update Profile functionality not implemented yet.');
+            });
+
+            document.getElementById('viewRequests').addEventListener('click', function() {
+                // Logic to view user requests
+                alert('View Requests functionality not implemented yet.');
+            });
+        });
+    </script>
+</body>
+</html>

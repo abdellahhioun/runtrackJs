@@ -20,7 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.status === 'success') {
                 // Redirect based on the user's role
-                window.location.href = data.role === 'admin' ? 'admin.html' : 'moderator.html';
+                switch (data.role) {
+                    case 'admin':
+                        window.location.href = 'admin.html'; // Redirect to admin dashboard
+                        break;
+                    case 'moderator':
+                        window.location.href = 'moderator.html'; // Redirect to moderator dashboard
+                        break;
+                    case 'user':
+                        window.location.href = 'user_dashboard.html'; // Redirect to user dashboard
+                        break;
+                    default:
+                        window.location.href = 'index.html'; // Fallback
+                }
             } else {
                 alert(data.message); // Show error message
             }

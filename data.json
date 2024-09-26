@@ -1,20 +1,25 @@
 {
-    "users": [
-        {
-            "email": "admin@laplateforme.com",
-            "password": "adminpassword",
-            "role": "admin"
-        },
-        {
-            "email": "moderator@laplateforme.com",
-            "password": "moderatorpassword",
-            "role": "moderator"
-        },
-        {
-            "email": "user@laplateforme.com",
-            "password": "userpassword",
-            "role": "user"
-        }
-    ],
-    "requests": []
+  "users": [
+    {
+      "email": "admin@laplateforme.com",
+      "password": "adminpassword",
+      "role": "admin"
+    },
+    {
+      "email": "moderator@laplateforme.com",
+      "password": "moderatorpassword",
+      "role": "moderator"
+    },
+    {
+      "email": "user@laplateforme.com",
+      "password": "userpassword",
+      "role": "user" 
+    },
+    {
+      "email": "abd-ellah.hioun@laplateforme.io",
+      "password": "adminpassword",
+      "role": "user"
+    }
+  ],
+  "requests": []
 }
